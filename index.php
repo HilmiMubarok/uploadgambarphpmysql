@@ -19,12 +19,18 @@
 			$gambar = $_FILES['gambar']['name'];
 			$dir    = $_FILES['gambar']['tmp_name'];
 
-			mysql_query("INSERT INTO gambar VALUES ('', '$nama', '$gambar') ");
-			move_uploaded_file($dir, "gambar/".$gambar);
-			echo "Sukses";
+			$query = "INSERT INTO gambar VALUES ('', '$nama', '$gambar') ";
+			$koneksi->query($sql);
+			if (move_uploaded_file($dir, "gambar/".$gambar)) {
+				echo "Sukses Uplaod Gambar";
+			} else {
+				echo "Gagal Upload Gambar";
+			}
+			
 		}
-		$query = mysql_query("SELECT * FROM gambar");
-		while ($has = mysql_fetch_array($query)) { ?>
+		$query = "SELECT * FROM gambar";
+		$tampil = $koneksi->query($query);
+		while ($has = $tampil->fetch_assoc()) { ?>
 		<p><?php echo $has['nama']; ?></p>
  		<img src="gambar/<?php echo $has['gambar']; ?>" width="100" style="float: left;">
  		<a href="edit.php?id=<?php echo $has['id']; ?>">Edit</a>
