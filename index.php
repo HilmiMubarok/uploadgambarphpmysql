@@ -9,6 +9,36 @@
 </head>
 <body>
 
+	<?php
+		session_start();
+
+		if (isset($_SESSION['result']) && isset($_SESSION['pesan'])) {
+			$hasil = $_SESSION['result'];
+			if ($hasil == "sukses") {
+				echo "<script>
+				swal({
+					title : 'Berhasil !',
+					text  : '".$_SESSION['pesan']."',
+					icon  : 'success',
+					button: false,
+					timer : 3000
+					})
+				</script>";
+			} else {
+				echo "<script>
+				swal({
+					title : 'Gagal !',
+					text  : '".$_SESSION['pesan']."',
+					icon  : 'error',
+					button: false,
+					timer : 3000
+					})
+				</script>";
+			}
+			session_unset();	
+		} 	
+	?>
+
 	<div class="container">
 		<h1>upload gambar</h1>
 		<br>

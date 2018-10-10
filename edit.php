@@ -40,6 +40,7 @@ $hasil = $tampil_data->fetch_assoc();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <?php 
+	session_start();
 	if (isset($_POST['btnsubmit'])) {
 		$nama   = $_POST['nama']; 
 		$gambar = $_FILES['gambar']['name'];
@@ -47,11 +48,23 @@ $hasil = $tampil_data->fetch_assoc();
 
 		if (empty($gambar)) {
 			$query = "UPDATE gambar SET nama = '$nama' WHERE id = '$id' ";
-			$koneksi->query($query);
+			if ($koneksi->query($query)) {
+				$_SESSION["pesan"]  = "Berhasil menyimpan data";
+				$_SESSION["result"] = "sukses";
+			} else {
+				$_SESSION["pesan"]  = "Gagal menyimpan data dengan pesan error : " . $koneksi->error;
+				$_SESSION["result"] = "gagal";
+			}
 			header("location:index.php");
 		} else {
 			$query = "UPDATE gambar SET nama = '$nama', gambar = '$gambar' WHERE id = '$id' ";
-			$koneksi->query($query);
+			if ($koneksi->query($query)) {
+				$_SESSION["pesan"]  = "Berhasil menyimpan data";
+				$_SESSION["result"] = "sukses";
+			} else {
+				$_SESSION["pesan"]  = "Gagal menyimpan data dengan pesan error : " . $koneksi->error;
+				$_SESSION["result"] = "gagal";
+			}
 			move_uploaded_file($dir, "gambar/".$gambar);
 			header("location:index.php");
 		}
