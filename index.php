@@ -3,15 +3,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Upload gambar</title>
+	<title>Upload gambar Php mysql</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 
 	<?php
+	// start session
 		session_start();
 
+		// jika ada session result dan pesan ter set
 		if (isset($_SESSION['result']) && isset($_SESSION['pesan'])) {
 			$hasil = $_SESSION['result'];
 			if ($hasil == "sukses") {
@@ -35,6 +37,8 @@
 					})
 				</script>";
 			}
+
+			// unset session
 			session_unset();	
 		} 	
 	?>
@@ -69,7 +73,7 @@
 				$dir    = $_FILES['gambar']['tmp_name'];
 
 				$query = "INSERT INTO gambar VALUES ('', '$nama', '$gambar') ";
-				$koneksi->query($query);
+				$conn->query($query);
 				if (move_uploaded_file($dir, "gambar/".$gambar)) {
 					echo "<script>
 					swal({

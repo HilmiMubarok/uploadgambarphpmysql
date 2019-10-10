@@ -4,10 +4,10 @@
 	$server   = "localhost";
 	$database = "uploadgambar";
 
-	$koneksi = new mysqli($server, $username, $password, $database);
+	$conn = new mysqli($server, $username, $password, $database);
 
 	// cek error
-	if ($koneksi->connect_error) {
-		die('Gagal koneksi karena : ' . $koneksi->connect_error);
+	if ($conn->connect_error) {
+		die('Gagal koneksi karena : ' . $conn->connect_error);
 	}
  ?>
