@@ -49,21 +49,21 @@ $hasil = $tampil_data->fetch_assoc();
 		if (empty($gambar)) {
 			$query = "UPDATE gambar SET nama = '$nama' WHERE id = '$id' ";
 			if ($koneksi->query($query)) {
-				$_SESSION["pesan"]  = "Berhasil menyimpan data";
+				$_SESSION["pesan"]  = "sukses menyimpan data";
 				$_SESSION["result"] = "sukses";
 			} else {
 				$_SESSION["pesan"]  = "Gagal menyimpan data dengan pesan error : " . $koneksi->error;
-				$_SESSION["result"] = "gagal";
+				$_SESSION["result"] = "gagal,silahkan coba lagi";
 			}
 			header("location:index.php");
 		} else {
 			$query = "UPDATE gambar SET nama = '$nama', gambar = '$gambar' WHERE id = '$id' ";
 			if ($koneksi->query($query)) {
-				$_SESSION["pesan"]  = "Berhasil menyimpan data";
+				$_SESSION["pesan"]  = "sukses menyimpan data";
 				$_SESSION["result"] = "sukses";
 			} else {
 				$_SESSION["pesan"]  = "Gagal menyimpan data dengan pesan error : " . $koneksi->error;
-				$_SESSION["result"] = "gagal";
+				$_SESSION["result"] = "gagal, silahkan coba lagi";
 			}
 			move_uploaded_file($dir, "gambar/".$gambar);
 			header("location:index.php");
