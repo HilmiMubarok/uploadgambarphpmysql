@@ -40,11 +40,11 @@
 	?>
 
 	<div class="container">
-		<h1>upload gambar</h1>
+		<h1>Upload Gambar menggunakan php mysql</h1>
 		<br>
 		<form method="post" enctype="multipart/form-data">
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Nama</label>
+				<label class="col-sm-2 col-form-label">Nama Gambar</label>
 				<div class="col-sm-10">
 					<input type="text" name="nama" class="form-control">
 				</div>
