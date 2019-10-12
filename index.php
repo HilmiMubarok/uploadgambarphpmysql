@@ -59,7 +59,7 @@
 				<div class="col-sm-10">
 					<div class="custom-file">
 						<input type="file" name="gambar" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						<label class="custom-file-label" for="inputGroupFile01">Pilih Gambar</label>
 					</div>
 				</div>
 			</div>
