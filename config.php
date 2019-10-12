@@ -8,6 +8,6 @@
 
 	// cek error
 	if ($conn->connect_error) {
-		die('Gagal koneksi karena : ' . $conn->connect_error);
+		die('Gagal Koneksi Karena : ' . $conn->connect_error);
 	}
  ?>
