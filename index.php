@@ -46,6 +46,7 @@
 	<div class="container">
 		<h1>Upload Gambar menggunakan php mysql</h1>
 		<br>
+		<h3>Silahkan Pilih Gambar</h3>
 		<form method="post" enctype="multipart/form-data">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Nama Gambar</label>
